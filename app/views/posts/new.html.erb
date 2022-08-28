@@ -1,0 +1,16 @@
+<%= current_user.id %>
+
+<% if @post.errors.any? %>
+  <%= @post.errors.full_messages %>
+<% end %>
+
+<%= form_with model: @post do |form| %>
+  <%= form.label :title %>
+  <%= form.text_area :title %>
+
+  <%= form.label :body %>
+  <%= form.text_area :body %>
+  
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  <%= form.submit %>
+<% end %>
