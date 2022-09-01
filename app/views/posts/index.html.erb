@@ -1,6 +1,14 @@
+<%= link_to "New post", new_post_url %>
 <% @posts.each do |post| %>
-  <%= post.title %>
-  <%= post.body %>
-  <%= post.user_id %>
+  <ul>
+    <li><%= post.title %></li>
+    <li><%= post.body %></li>
+    <li><%= post.user_id %></li>
+  </ul>
 
+<% end %>
+  Logged in:
+<% unless current_user.nil? %>
+  <%= current_user.username %>
+  <%= link_to "sign out", destroy_user_session_path, :method => :delete %> 
 <% end %>
